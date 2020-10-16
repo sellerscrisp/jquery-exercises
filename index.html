@@ -116,10 +116,35 @@
         $('article p:last-child').remove();
 
         // random pixel size (0px – 100px) of title
-        $('title').css('font-size', Math.random() * 101);
+        $('#title').css('font-size', Math.random() * 101);
 
         // add list item
-        $();
+        $('ol').append(
+          $('<li>', {
+            text: 'I can say whatever the h e double hockey sticks I want to!',
+          })
+        );
+
+        // remove stupid list item
+        $('aside')
+          .empty()
+          .append($('<p>', { text: 'I love life' }));
+
+        // change body backgroud
+        $('.form-control').on('keyup blur change', function () {
+          let red = $('.form-control').eq(0).val();
+          let blue = $('.form-control').eq(1).val();
+          let green = $('.form-control').eq(2).val();
+          $('body').css(
+            'background-color',
+            'rgb(' + red + ',' + green + ',' + blue + ')'
+          );
+        });
+
+        // click image to remove
+        $('img').on('click', function (e) {
+          $(e.target).remove();
+        });
       });
     </script>
   </body>
